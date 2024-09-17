@@ -20,7 +20,7 @@
       ],
       "link": "https://www.nps.gov/acad/index.htm",
       "visitors": 3970260,
-      "pointValue": 189,
+      "pointValue": 327,
       "wildlife": [
         "American black bear",
         "White-tailed deer",
@@ -57,7 +57,7 @@
         "Song sparrow"
       ],
       "quizQuestions": {},
-      "gameWon": true,
+      "gameWon": false,
       "description": "Covering most of Mount Desert Island and other coastal islands, Acadia features the tallest mountain on the Atlantic coast of the United States, granite peaks, ocean shoreline, woodlands, and lakes. There are freshwater, estuary, forest, and intertidal habitats.",
       "favorited": true
     },
@@ -1870,7 +1870,7 @@
         "Green anole"
       ],
       "quizQuestions": {},
-      "gameWon": true,
+      "gameWon": false,
       "description": "Renowned for its thermal springs, this urban park offers historic bathhouses, scenic trails, and cultural attractions. Visitors can take a bath in the thermal waters, explore hiking trails, and enjoy the charming town of Hot Springs.",
       "favorited": false
     },
@@ -1894,7 +1894,7 @@
       ],
       "link": "https://www.nps.gov/isro/index.htm",
       "visitors": 25454,
-      "pointValue": 609,
+      "pointValue": 411,
       "wildlife": [
         "White-tailed deer",
         "Eastern gray squirrel",
@@ -1928,7 +1928,7 @@
         "American bullfrog"
       ],
       "quizQuestions": {},
-      "gameWon": true,
+      "gameWon": false,
       "description": "Located in the largest freshwater lake in the world, Lake Superior, Isle Royale National Park is known for its pristine wilderness. Visitors can explore the island's rugged coastline, hike, and observe diverse wildlife, including wolves and moose.",
       "favorited": false
     },
@@ -2430,7 +2430,7 @@
       ],
       "link": "https://www.nps.gov/lavo/index.htm",
       "visitors": 446291,
-      "pointValue": 0,
+      "pointValue": 413,
       "wildlife": [
         "Mule deer",
         "Black bear",
@@ -3527,7 +3527,7 @@
       "location": [
         "South Dakota"
       ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wind_Cave_lower.jpg/200px-Wind_Cave_lower.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wind_Cave_lower.jpg/1024px-Wind_Cave_lower.jpg",
       "coordinates": {
         "lat": 43.57,
         "lng": -103.48
@@ -3670,7 +3670,7 @@
         "Wapiti Lake Wolf Pack"
       ],
       "link": "https://www.nps.gov/yell/index.htm",
-      "visitors": 3,
+      "visitors": 3290242,
       "pointValue": 0,
       "wildlife": [
         "American bison",
@@ -3840,41 +3840,126 @@
       "favorited": false
     }
   ],
+
   "users": [
     {
       "id": 1,
-      "username": "isaac",
-      "points": 10625,
-      "cards": []
+      "username": "Isaac",
+      "points": 11038,
+      "cards": [
+        1,
+        4, 
+        7, 
+        62, 
+        12,
+        32,
+        47,
+        27,
+        11,
+        14
+      ]
     },
     {
       "id": 2,
-      "username": "buzz",
-      "points": 0,
-      "cards": []
+      "username": "Tiana",
+      "points": 6438,
+      "cards": [
+        1, 
+        4, 
+        7, 
+        62, 
+        12
+      ]
     },
     {
       "id": 3,
-      "username": "connor",
-      "points": 0,
-      "cards": []
+      "username": "Connor",
+      "points": 3738,
+      "cards": [
+        32,
+        1,
+        2,
+        3,
+        5,
+        8
+      ]
     },
     {
       "id": 4,
-      "username": "tiana",
+      "username": "Wesley",
       "points": 0,
       "cards": []
     },
     {
       "id": 5,
-      "username": "Matteo",
+      "username": "Brian",
       "points": 0,
       "cards": []
     },
     {
       "id": 6,
-      "username": "con con",
-      "points": 5625,
+      "username": "Isaac S.",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 7,
+      "username": "Kat",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 8,
+      "username": "Michael",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 9,
+      "username": "Anthony",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 10,
+      "username": "Danner",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 11,
+      "username": "Matteo",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 12,
+      "username": "Zach",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 13,
+      "username": "Austin",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 14,
+      "username": "Alberto",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 15,
+      "username": "Joseph",
+      "points": 0,
+      "cards": []
+    },
+    {
+      "id": 16,
+      "username": "Landon",
+      "points": 0,
       "cards": []
     }
   ]

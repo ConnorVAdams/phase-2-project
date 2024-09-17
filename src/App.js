@@ -1,13 +1,9 @@
-import { calculateScore, handleWin } from './helpers.js'
 import { useState, useEffect } from 'react'
 import { Outlet } from "react-router-dom"
 import Header from './components/nav/Header'
 import Footer from './components/nav/Footer'
 import './App.css'
-import wildlifeData from './wildlifeData.js'
 import ParkCard from './components/ParkCard.js'
-import noDuplicates from './wildlifeData.js'
-import { all } from 'q'
 
 const URL = 'http://localhost:3000/parkObj'
 
@@ -20,6 +16,7 @@ const [card, setCard] = useState({
 })
 const [currentUser, setCurrentUser] = useState("")
 const [users, setUsers] = useState([])
+const [usersParks, setUsersParks] = useState([])
 
 const handleCreateUserSubmit = async (username) => {
   try {
@@ -28,7 +25,7 @@ const handleCreateUserSubmit = async (username) => {
     const currentUsers = await response.json()
 
      // Check if the username already exists
-     if (currentUsers.some(user => user.username === username)) {
+      if (currentUsers.some(user => user.username === username)) {
       alert('Username already exists. Choose a different username.')
       // Optionally, display an error message to the user
       return
@@ -42,8 +39,6 @@ const handleCreateUserSubmit = async (username) => {
       cards: [],
     }
 
-
-
     // Update the users in the db.json file using POST
     await fetch('http://localhost:3000/users', {
       method: 'POST',
@@ -53,7 +48,6 @@ const handleCreateUserSubmit = async (username) => {
       body: JSON.stringify(newUser),
     });
 
-    console.log('User created successfully!')
   } catch (error) {
     alert('Error creating user:', error)
   }
@@ -67,8 +61,9 @@ const handleLoginUserSubmit = async (username) => {
     const foundUser = currentUsers.find((user) => user.username === username)
 
     if (foundUser) {
-      console.log('User found:', foundUser)
-      setCurrentUser(foundUser) // Set currentUser state correctly
+      setCurrentUser(current => foundUser)
+
+    // Set currentUser state correctly
     } else {
       alert('User not found. Please check your username.')
     }
@@ -76,6 +71,8 @@ const handleLoginUserSubmit = async (username) => {
     alert('Error finding user:', error)
   }
 }
+
+// const handleLoginUserSubmit =
 
 const fetchAllUsers = () => {
   fetch("http://localhost:3000/users")
@@ -100,11 +97,7 @@ useEffect(() => {
 }, [])
 
 //Score calculator specific to memory game
-  //TODO Can be generalized to calculate score for every game?
   const calculateScore = (finalTime) => {
-    const minimumMoves = 1
-    //Awards player more points for lower number of moves and/or lower elapsed time, with a maximum of 10,000.
-    //TODO What should maximum points for each game be?
     return Math.round(10000000 / (finalTime))
   }
 
@@ -132,13 +125,14 @@ useEffect(() => {
       }))
 
        // Patch request to update user points in the database
-       fetch(`http://localhost:3000/users/${currentUser.id}`, {
+      fetch(`http://localhost:3000/users/${currentUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           points: currentUser.points + data.pointValue,
+          cards: [...currentUser.cards, gameId]
         }),
       })
 
@@ -148,7 +142,6 @@ useEffect(() => {
       })
     })
     .then(fetchAllParks())
-    console.log(`Congratulations, you earned ${score} points!`)
   }
 
   const resetCard = () => {
@@ -158,21 +151,19 @@ useEffect(() => {
     })
   }
 
-  //TODO handleWin
-  // * 1. Calculate score
-  // * 3. PATCH database with gameWon: true
 
-  // * 4 . Display score to user
-  // * 5. Pop up card to user, user can navigate '/' from it.
-  // * 6. Update points container.
-
-  //7. Updates points/parks in userObj.
-
+  //function to navigate to parkcard
+  const cardRoute = (parkObj) => {
+    setCard({
+      park: parkObj,
+      displayCard: true
+    })
+  }
 
   return (
     <div className={card.displayCard ? 'wrapper hidden' : 'wrapper'}>
       <Header currentUser={currentUser} onLoginUserSubmit={handleLoginUserSubmit} onCreateUserSubmit={handleCreateUserSubmit} />
-      <Outlet context={{ currentUser, users, parks, handleWin }} />
+      <Outlet context={{ currentUser, users, parks, handleWin, cardRoute }} />
       {card.displayCard ? <ParkCard park={card.park} resetCard={resetCard} /> : null}
       <Footer />
     </div>

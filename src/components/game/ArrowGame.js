@@ -50,7 +50,12 @@ const winBox = [
 const cellSize = 20;
 
 const ArrowGame = () => {
-  const { id, image, handleWin, name } = useOutletContext()
+  // const { gamePark: { id, name, attractions, wildlife, image, location, gameWon } } = currentGameData
+  // const { path } = currentGameData
+
+  const { currentGameData, handleWin} = useOutletContext()
+  const { gamePark: { id, name, attractions, wildlife, image, location, gameWon } } = currentGameData
+  const { path } = currentGameData
   const [position, setPosition] = useState({ x: 10, y: 380 });
   const [startTime, setStartTime] = useState(Date.now())
   // const [wallHits, setWallHits] = useState(1)
@@ -80,7 +85,6 @@ if (!isCollisionWinBox(newPosition.x, newPosition.y)) {
     setPosition(newPosition);
   } else {
     // Log the message to the console or display it in the component
-    console.log("You Win! You reached the top.");
     const endTime = Date.now()
     // Callback handleWin function if end is reached
     handleWin(id, (endTime - startTime))
@@ -131,14 +135,13 @@ if (!isCollisionWinBox(newPosition.x, newPosition.y)) {
     };
   }, [handleKeyDown]);
 
-  const reset = () => {
-    console.log('hi isaac')
-  }
+  // const reset = () => {
+  //   console.log('hi isaac')
+  // }
 
   return (
-    <>
-    <button onClick={reset}>Retry</button>
-      <div style={{backgroundImage: {image}, position: "relative", height: "400px", width: "400px", border: "1px solid #ccc" }}>
+    <div style={{backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100%', position: "relative", height: "400px", width: "400px", border: "1px solid #ccc" }}>
+      <div>
         {maze.map((row, rowIndex) => (
           <div key={rowIndex} style={{ display: "flex" }}>
             {row.map((cell, colIndex) => (
@@ -147,11 +150,11 @@ if (!isCollisionWinBox(newPosition.x, newPosition.y)) {
                 style={{
                   width: cellSize,
                   height: cellSize,
-                  backgroundColor: cell === 1 ? "rgba(139, 69, 19, 0.1)" : "transparent",
-                  borderTop: cell === 1 ? "rgba(139, 69, 19, 0.1)" : "transparent",
-                  borderRight: cell === 1 ? "rgba(139, 69, 19, 0.1)" : "transparent",
-                  borderBottom: cell === 1 ? "rgba(139, 69, 19, 0.1)" : "transparent",
-                  borderLeft: cell === 1 ? "rgba(139, 69, 19, 0.1)" : "transparent",
+                  backgroundColor: cell === 1 ? "rgba(139, 69, 19, 0.8)" : "transparent",
+                  borderTop: cell === 1 ? "rgba(139, 69, 19, 0.8)" : "transparent",
+                  borderRight: cell === 1 ? "rgba(139, 69, 19, 0.8)" : "transparent",
+                  borderBottom: cell === 1 ? "rgba(139, 69, 19, 0.8)" : "transparent",
+                  borderLeft: cell === 1 ? "rgba(139, 69, 19, 0.8)" : "transparent",
                   boxSizing: "border-box",
                   position: "absolute",
                   top: `${rowIndex * cellSize}px`,
@@ -169,11 +172,11 @@ if (!isCollisionWinBox(newPosition.x, newPosition.y)) {
                 style={{
                   width: cellSize,
                   height: cellSize,
-                  backgroundColor: cell === 1 ? "rgba(0, 255, 0, 0.2)" : "transparent",
-                  borderTop: cell === 1 ? "rgba(0, 255, 0, 0.2)" : "transparent",
-                  borderRight: cell === 1 ? "rgba(0, 255, 0, 0.2)" : "transparent",
-                  borderBottom: cell === 1 ? "rgba(0, 255, 0, 0.2)" : "transparent",
-                  borderLeft: cell === 1 ? "rgba(0, 255, 0, 0.2)" : "transparent",
+                  backgroundColor: cell === 1 ? "rgba(0, 255, 0, 0.8)" : "transparent",
+                  borderTop: cell === 1 ? "rgba(0, 255, 0, 0.8)" : "transparent",
+                  borderRight: cell === 1 ? "rgba(0, 255, 0, 0.8)" : "transparent",
+                  borderBottom: cell === 1 ? "rgba(0, 255, 0, 0.8)" : "transparent",
+                  borderLeft: cell === 1 ? "rgba(0, 255, 0, 0.8)" : "transparent",
                   boxSizing: "border-box",
                   position: "absolute",
                   left: `${colIndex * cellSize}px`,
@@ -190,13 +193,14 @@ if (!isCollisionWinBox(newPosition.x, newPosition.y)) {
             position: "absolute",
             top: `${position.y}px`,
             left: `${position.x}px`,
-            width: "10px",
-            height: "10px",
+            width: "15px",
+            height: "18px",
             zIndex: 2, // Ensure the character is rendered above the win box and the maze
           }}
         />
       </div>
-    </>
+      {/* <button onClick={reset}>Retry</button> */}
+    </div>
   );
 };
 
